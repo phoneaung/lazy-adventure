@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
+from .models import Userprofile
+
 # use built in UserCreationForm from django for signup 
 def signup(request):
     form = UserCreationForm()
@@ -9,12 +11,13 @@ def signup(request):
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.save()
+            Userprofile.objects.create(user=user)
         
-        return redirect('/login/')
+        return redirect('/log-in/')
     
     else:
-        form = UserCreationForm
+        form = UserCreationForm()
     
     return render(request, 'userprofile/signup.html', {
         'form': form,
