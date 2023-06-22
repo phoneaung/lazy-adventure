@@ -17,26 +17,34 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Candidates</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">My account</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-white" href="{% url 'about' %}">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{% url 'login' %}">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="{% url 'signup' %}">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Log out</a>
-                        </li>
+
+                        {% if request.user.is_authenticated %}
+
+                            <li class="nav-item">
+                                <a class="nav-link active text-white" aria-current="page" href="#">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Candidates</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">My account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{% url 'logout' %}">Log out</a>
+                            </li>
+
+                        {% else %}
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{% url 'login' %}">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{% url 'signup' %}">Sign up</a>
+                            </li>
+            
+                        {% endif %}
                     </ul>
                 </div>
             </div>
