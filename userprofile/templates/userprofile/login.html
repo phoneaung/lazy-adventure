@@ -10,24 +10,25 @@
 
     <form method="post" action=".">
         {% csrf_token %}
-        <div>
-            
-            <div class="col d-flex justify-content-center">
-                <div class="row my-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username">
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center">
-                <div class="row my-auto">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password">
-                </div>
-            </div>
-            <div class="col d-flex justify-content-center my-3">
-                <button type="submit" class="btn btn-success bg-gradient">Log in</button>
+        
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label class="col-form-label">Username</label>
+                <input type="text" name="username" autofocus class="form-control">
             </div>
         </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">Password</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+        </div>
+
+        <div class="d-grid my-3 gap-2 d-md-flex justify-content-center">
+            <button type="submit" class="btn btn-success bg-gradient">Log in</button>
+        </div>
+
     </form>
 
 {% endblock %}
