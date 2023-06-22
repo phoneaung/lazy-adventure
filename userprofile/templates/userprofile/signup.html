@@ -10,10 +10,32 @@
     <h1>Sign up</h1>
     <form method="post" action=".">
         {% csrf_token %}
+        
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label class="col-form-label">Username</label>
+                <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username" class="form-control">
+            </div>
+        </div>
 
-        {{ form.as_p }}
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">Password</label>
+                <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-control">
+            </div>
+        </div>
 
-        <button type="submit" class="mx-3 btn btn-success bg-gradient">Sign up</button>
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="inputPassword6" class="col-form-label">Confirm password</label>
+                <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="form-control">
+            </div>
+        </div>
+
+        <div class="d-grid my-3 gap-2 d-md-flex justify-content-center">
+            <button type="submit" class="btn btn-success bg-gradient">Signup</button>
+        </div>
+
     </form>
 
 {% endblock %}

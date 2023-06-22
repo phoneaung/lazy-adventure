@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+
+    RMS - Log in
+
+{% endblock %}
+
+{% block content %}
+
+    <form method="post" action=".">
+        {% csrf_token %}
+        <div>
+            
+            <div class="col d-flex justify-content-center">
+                <div class="row my-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <div class="row my-auto">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+            </div>
+            <div class="col d-flex justify-content-center my-3">
+                <button type="submit" class="btn btn-success bg-gradient">Log in</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
