@@ -21,7 +21,7 @@ class Candidate(models.Model):
     status = models.CharField(max_length=11, choices=CHOICES_STATUS, default=NEW)
     email = models.EmailField()
     phone = models.PositiveIntegerField()
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
     created_by = models.ForeignKey(User, related_name='candidates', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

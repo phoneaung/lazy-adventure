@@ -8,7 +8,7 @@ from userprofile.views import signup
 urlpatterns = [
     path('', index, name='index'),
     path('dashboard/', include('dashboard.urls')),
-    path('dashboard/', include('candidate.urls')),
+    path('dashboard/candidates/', include('candidate.urls')),
     path('about/', about, name='about'),
     path('sign-up/', signup, name='signup'),
     path('log-in/', views.LoginView.as_view(template_name='userprofile/login.html'), name='login'),
