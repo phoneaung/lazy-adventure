@@ -14,6 +14,10 @@ def candidates_list(request):
         'candidates': candidates,
     })
 
+# detail page of candidate
+def candidate_details(request, pk):
+    ret
+
 # create new candidate 
 @login_required
 def add_candidate(request):
