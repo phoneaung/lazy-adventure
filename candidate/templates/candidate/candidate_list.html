@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+
+    RMS - Candidates
+
+{% endblock %}
+
+{% block content %}
+
+    <h1>Candidates</h1>
+
+    <button class="mx-3 btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'add_candidate' %}">Add new candidate</a></button>
+
+    <div class="row mx-3">
+
+        {% for candidate in candidates %}
+
+        <div class="card mx-4 my-3" style="width: 300px;">
+            <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ candidate.name }}</h5>
+                <p class="card-text">{{ candidate.status }}</p>
+                <a href="#" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

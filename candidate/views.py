@@ -9,8 +9,8 @@ from .forms import AddCandidateForm
 @login_required
 def candidates_list(request):
     candidates = Candidate.objects.filter(is_active=True)
-    
-    return render(request, 'candidate/candidate.html', {
+
+    return render(request, 'candidate/candidate_list.html', {
         'candidates': candidates,
     })
 
@@ -18,7 +18,7 @@ def candidates_list(request):
 @login_required
 def add_candidate(request):
     if request.method == 'POST':
-        form = AddCandidateForm(request.POST)
+        form = AddCandidateForm(request.POST, request.FILES)
 
         if form.is_valid():
             candidate = form.save(commit=False)

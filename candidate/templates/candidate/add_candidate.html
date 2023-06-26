@@ -8,7 +8,7 @@
 
 {% block content %}
     <h1>Add a new candidate</h1>
-    <form method="post" action=".">
+    <form method="post" action="." enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="row g-3 align-items-center justify-content-center">
