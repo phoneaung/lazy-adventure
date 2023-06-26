@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Candidate
 from .forms import AddCandidateForm
@@ -10,6 +10,16 @@ def candidate(request):
 
 @login_required
 def add_candidate(request):
+    if request.method == 'POST':
+        form = AddCandidateForm(request.POST)
+
+        if form.is_valid():
+            candidate = form.save(commit=False)
+            candidate.created_by = request.user
+            candidate.save()
+
+            return redirect('/dashboard/')
+
     form = AddCandidateForm()
 
     return render(request, 'candidate/add_candidate.html', {

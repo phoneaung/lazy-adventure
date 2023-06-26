@@ -7,10 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    
+    <h1>Add a new candidate</h1>
     <form method="post" action=".">
         {% csrf_token %}
-        
+
         <div class="row g-3 align-items-center justify-content-center">
             <div class="col-auto">
                 <label class="col-form-label" for="id_name">Name:</label>
@@ -35,7 +35,14 @@
         <div class="row g-3 align-items-center justify-content-center">
             <div class="col-auto">
                 <label for="id_phone">Phone:</label>
-                <input type="number" class="form-control" name="phone" min="0" required id="id_phone">
+                <input type="tel" class="form-control" name="phone" required id="id_phone">
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_phone">Upload image:</label>
+                <input type="file" class="form-control" name="image" accept="image/*" id="id_image">
             </div>
         </div>
 
