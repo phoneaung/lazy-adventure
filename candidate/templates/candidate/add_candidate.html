@@ -10,7 +10,7 @@
     <h1>Add a new candidate</h1>
     <form method="post" action="." enctype="multipart/form-data">
         {% csrf_token %}
-
+        
         <div class="row g-3 align-items-center justify-content-center">
             <div class="col-auto">
                 <label class="col-form-label" for="id_name">Name:</label>
@@ -43,6 +43,13 @@
             <div class="col-auto">
                 <label for="id_phone">Upload image:</label>
                 <input type="file" class="form-control" name="image" accept="image/*" id="id_image">
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_resume">Resume:</label>
+                <input type="file" class="form-control" name="resume" id="id_resume">
             </div>
         </div>
 
