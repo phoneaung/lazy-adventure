@@ -5,10 +5,16 @@ from django.contrib import messages
 from .models import Candidate
 from .forms import AddCandidateForm
 
+# show all candidates
 @login_required
-def candidate(request):
-    return render(request, 'candidate/candidate.html')
+def candidates_list(request):
+    candidates = Candidate.objects.filter(is_active=True)
+    
+    return render(request, 'candidate/candidate.html', {
+        'candidates': candidates,
+    })
 
+# create new candidate 
 @login_required
 def add_candidate(request):
     if request.method == 'POST':
