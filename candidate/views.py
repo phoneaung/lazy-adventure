@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from .models import Candidate
 from .forms import AddCandidateForm
@@ -17,6 +18,8 @@ def add_candidate(request):
             candidate = form.save(commit=False)
             candidate.created_by = request.user
             candidate.save()
+
+            messages.success(request, "Candidate has successfully created!")
 
             return redirect('/dashboard/')
 
