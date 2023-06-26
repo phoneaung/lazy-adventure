@@ -16,7 +16,11 @@ def candidates_list(request):
 
 # detail page of candidate
 def candidate_details(request, pk):
-    ret
+    candidate = Candidate.objects.filter(is_active=True).get(pk=pk)
+
+    return render(request, 'candidate/candidate_details.html', {
+        'candidate': candidate
+    })
 
 # create new candidate 
 @login_required
