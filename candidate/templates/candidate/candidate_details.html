@@ -8,12 +8,27 @@
 
 {% block content %}
 
-    <button class="mx-3 btn btn-success bg-gradient"><a class="nav-link text-white" href="#">Edit</a></button>
+    <button class="mx-3 my-3 btn btn-success bg-gradient"><a class="nav-link text-white" href="#">Edit</a></button>
 
     <div class="row mx-3">
+        <div class="card mx-4 my-3" style="width: 300px;">
+            <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
+        </div>
 
-        show candidate
-       
+        <h1>{{ candidate.name }}</h1>
+
+        {% if candidate.description %}
+            <p>Description: {{ candidate.description }}</p>
+        {% endif %}
+
+        <p>Status:</p>
+        <p>{{ candidate.get_status_display }}</p>
+
+        <p>Email: {{ candidate.email }}</p>
+        
+        <p>Phone: {{ candidate.phone }}</p>
+
+        <p>Download resume</p>
     </div>
 
 {% endblock %}
