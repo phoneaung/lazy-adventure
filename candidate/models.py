@@ -21,7 +21,7 @@ class Candidate(models.Model):
     status = models.CharField(max_length=11, choices=CHOICES_STATUS, default=NEW)
     email = models.EmailField()
     phone = models.PositiveIntegerField()
-    image = models.ImageField(upload_to='candidate_images', blank=True, null=True)
+    image = models.ImageField(upload_to='candidate_images', default='default_image.jpg', blank=True, null=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_by = models.ForeignKey(User, related_name='candidates', on_delete=models.CASCADE)
