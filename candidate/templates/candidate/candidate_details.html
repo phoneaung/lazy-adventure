@@ -15,20 +15,23 @@
             <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
         </div>
 
-        <h1>{{ candidate.name }}</h1>
+        <h1>Name: {{ candidate.name }}</h1>
 
         {% if candidate.description %}
             <p>Description: {{ candidate.description }}</p>
         {% endif %}
 
-        <p>Status:</p>
-        <p>{{ candidate.get_status_display }}</p>
+        <p>Status: {{ candidate.get_status_display }}</p>
 
         <p>Email: {{ candidate.email }}</p>
         
         <p>Phone: {{ candidate.phone }}</p>
 
-        <p>Download resume</p>
+        <div class="d-grid my-3 gap-2 d-md-flex">
+            <button type="submit" class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'candidates_list' %}">Back</a></button>
+            <button type="submit" class="btn btn-success bg-gradient">Download resume</button>
+        </div>
+
     </div>
 
 {% endblock %}
