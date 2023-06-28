@@ -11,8 +11,8 @@
     <!-- Search bar-->
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
-            <form method="get" action="{% url 'candidates_list' %}" class="d-flex" role="search">
-                <input name="query" value="{{ query }}" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form method="get" action="{% url 'candidates_list' %}?query={{ query }}" class="d-flex" role="search">
+                <input name="query" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -21,6 +21,7 @@
     <!-- add candidate -->
     <button class="mx-3 my-3 btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'add_candidate' %}">Add new candidate</a></button>
 
+    {% if candidates %}
     <div class="row mx-3">
 
         {% for candidate in candidates %}
@@ -37,5 +38,10 @@
         {% endfor %}
 
     </div>
+    {% else %}
+        <div class="row mx-3">
+            <p>no candidates found</p>
+        </div>
+    {% endif %}
 
 {% endblock %}
