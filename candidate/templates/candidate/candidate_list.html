@@ -8,6 +8,17 @@
 
 {% block content %}
 
+    <!-- Search bar-->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <form method="get" action="{% url 'candidates_list' %}" class="d-flex" role="search">
+                <input name="query" value="{{ query }}" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- add candidate -->
     <button class="mx-3 my-3 btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'add_candidate' %}">Add new candidate</a></button>
 
     <div class="row mx-3">
