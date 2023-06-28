@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
 from .models import Candidate
@@ -14,13 +14,16 @@ def candidates_list(request):
         'candidates': candidates,
     })
 
+
 # detail page of candidate
+@login_required
 def candidate_details(request, pk):
-    candidate = Candidate.objects.filter(is_active=True).get(pk=pk)
+    candidate = get_object_or_404(Candidate, is_active=True, pk=pk)
 
     return render(request, 'candidate/candidate_details.html', {
         'candidate': candidate
     })
+
 
 # create new candidate 
 @login_required
@@ -42,3 +45,9 @@ def add_candidate(request):
     return render(request, 'candidate/add_candidate.html', {
         'form': form
     })
+
+
+# edit candidates
+@login_required
+def edit_candidate(request, pk):
+    return render(request, 'candidate/edit_candidate.html')

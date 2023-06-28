@@ -2,7 +2,7 @@
 
 {% block title %}
 
-    RMS - {{ candidate.name }} 
+    RMS - Edit {{ candidate.name }} 
 
 {% endblock %}
 
@@ -15,7 +15,7 @@
             <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
         </div>
 
-        <h1>{{ candidate.name }}</h1>
+        <h1>Name: {{ candidate.name }}</h1>
 
         {% if candidate.description %}
             <p>Description: {{ candidate.description }}</p>
@@ -27,11 +27,6 @@
         
         <p>Phone: {{ candidate.phone }}</p>
 
-        <p>Created by: {{ candidate.created_by }}</p>
-
-        <p>Created on: {{ candidate.created_at|date:"d-M-Y, H:i" }}</p>
-
-        <p>Last modified: {{ candidate.modified_at|date:"d-M-Y, H:i" }}</p>
 
         <div class="d-grid my-3 gap-2 d-md-flex">
             <button type="submit" class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'candidates_list' %}">Back</a></button>
