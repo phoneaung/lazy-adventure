@@ -27,7 +27,7 @@ class Candidate(models.Model):
     created_by = models.ForeignKey(User, related_name='candidates', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
-    last_modified_by = models.ForeignKey(User, related_name='candidate', on_delete=models.CASCADE)
+    last_modified_by = models.ForeignKey(User, related_name='candidate', blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
