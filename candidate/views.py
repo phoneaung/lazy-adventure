@@ -61,6 +61,7 @@ def edit_candidate(request, pk):
         form = AddCandidateForm(request.POST, request.FILES, intance=candidate)
 
         if form.is_valid():
+            candidate.last_modified_by = request.user
             form.save()
 
             messages.success(request, 'The changes were saved!')

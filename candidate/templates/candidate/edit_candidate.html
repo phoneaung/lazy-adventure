@@ -2,37 +2,62 @@
 
 {% block title %}
 
-    RMS - Edit {{ candidate.name }} 
+    RMS - Edit candidate
 
 {% endblock %}
 
 {% block content %}
-
-    <button class="mx-3 my-3 btn btn-success bg-gradient"><a class="nav-link text-white" href="#">Edit</a></button>
-
-    <div class="row mx-3">
-        <div class="card mx-4 my-3" style="width: 300px;">
-            <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
-        </div>
-
-        <h1>Name: {{ candidate.name }}</h1>
-
-        {% if candidate.description %}
-            <p>Description: {{ candidate.description }}</p>
-        {% endif %}
-
-        <p>Status: {{ candidate.get_status_display }}</p>
-
-        <p>Email: {{ candidate.email }}</p>
+    <h1>Edit candidate</h1>
+    <form method="post" action="." enctype="multipart/form-data">
+        {% csrf_token %}
         
-        <p>Phone: {{ candidate.phone }}</p>
-
-
-        <div class="d-grid my-3 gap-2 d-md-flex">
-            <button type="submit" class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'candidates_list' %}">Back</a></button>
-            <button type="submit" class="btn btn-success bg-gradient">Download resume</button>
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label class="col-form-label" for="id_name">Name:</label>
+                <input type="text" class="form-control" name="name" maxlength="255" autofocus required id="id_name">
+            </div>
         </div>
 
-    </div>
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_description">Description:</label>
+                <input type="text" class="form-control" name="description" cols="40" rows="10" id="id_description"></input>
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_email">Email:</label>
+                <input type="email" class="form-control" name="email" maxlength="254" required id="id_email">
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_phone">Phone:</label>
+                <input type="tel" class="form-control" name="phone" required id="id_phone">
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_phone">Upload image:</label>
+                <input type="file" class="form-control" name="image" accept="image/*" id="id_image">
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_resume">Resume:</label>
+                <input type="file" class="form-control" name="resume" id="id_resume">
+            </div>
+        </div>
+
+        <div class="d-grid my-3 gap-2 d-md-flex justify-content-center">
+            <button type="submit" class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'candidates_list' %}">Back</a></button>
+            <button type="submit" class="btn btn-success bg-gradient">Create</button>
+        </div>
+
+    </form>
 
 {% endblock %}
