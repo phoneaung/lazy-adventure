@@ -51,15 +51,15 @@
             <div class="col-auto">
                 <label for="id_resume">Update Resume:</label>
                 <a href="{{ candidate.resume }}">{{ candidate.resume }}</a>
+                <input type="checkbox" value="remove_image">Clear
                 <input type="file" class="form-control" name="resume" id="id_resume">
             </div>
         </div>
 
         <div class="d-grid my-3 gap-2 d-md-flex justify-content-center">
             <button type="submit" class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'candidates_list' %}">Back</a></button>
-            <button type="submit" class="btn btn-success bg-gradient">Create</button>
+            <button type="submit" class="btn btn-success bg-gradient">Save changes</button>
         </div>
-
 
     </form>
 

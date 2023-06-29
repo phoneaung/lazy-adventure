@@ -61,11 +61,16 @@ def edit_candidate(request, pk):
         form = AddCandidateForm(request.POST, request.FILES, instance=candidate)
 
         if form.is_valid():
+            
+            if 'remove_image' in request.POST:
+                candidate.image.delete(save=False)
+                candidate.image = None
+        
             candidate.last_modified_by = request.user
             form.save()
 
             messages.success(request, 'The changes were saved!')
-            return redirect('/candidates_list/')
+            return redirect('candidate_list')
     else:
         form = AddCandidateForm(instance=candidate)
 
