@@ -58,7 +58,7 @@ def edit_candidate(request, pk):
     candidate = get_object_or_404(Candidate, pk=pk)
 
     if request.method == 'POST':
-        form = AddCandidateForm(request.POST, request.FILES, intance=candidate)
+        form = AddCandidateForm(request.POST, request.FILES, instance=candidate)
 
         if form.is_valid():
             candidate.last_modified_by = request.user
@@ -71,4 +71,5 @@ def edit_candidate(request, pk):
 
     return render(request, 'candidate/edit_candidate.html', {
         'form': form,
+        'candidate': candidate,
     })
