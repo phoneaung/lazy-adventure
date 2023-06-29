@@ -10,7 +10,7 @@ from .forms import AddCandidateForm
 def candidates_list(request):
     candidates = Candidate.objects.filter(is_active=True)
     query = request.GET.get('query')
-    
+
     if query:
         candidates = candidates.filter(name__icontains=query)
 
@@ -55,4 +55,19 @@ def add_candidate(request):
 # edit candidates
 @login_required
 def edit_candidate(request, pk):
-    return render(request, 'candidate/edit_candidate.html')
+    candidate = get_object_or_404(Candidate, pk=pk)
+
+    if request.method == 'POST':
+        form = AddCandidateForm(request.POST, request.FILES, intance=candidate)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'The changes were saved!')
+            return redirect('/candidates_list/')
+    else:
+        form = AddCandidateForm(instance=candidate)
+
+    return render(request, 'candidate/edit_candidate.html', {
+        'form': form,
+    })
