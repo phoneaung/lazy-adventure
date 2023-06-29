@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.db.models import Q 
 from django.contrib import messages
 
 from .models import Candidate
@@ -11,9 +10,9 @@ from .forms import AddCandidateForm
 def candidates_list(request):
     candidates = Candidate.objects.filter(is_active=True)
     query = request.GET.get('query')
-
+    
     if query:
-        candidates = candidates.filter(Q(name_icontains=query))
+        candidates = candidates.filter(name__icontains=query)
 
     return render(request, 'candidate/candidate_list.html', {
         'candidates': candidates,
