@@ -89,3 +89,5 @@ def edit_candidate(request, pk):
         'form': form,
         'candidate': candidate,
     })
+
+# delete candidate
