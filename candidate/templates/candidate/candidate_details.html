@@ -40,7 +40,7 @@
             {% if candidate.resume %}
                 <button type="submit" class="btn btn-success bg-gradient"><a style="text-decoration:none" href="{{ candidate.resume.url }}" class="text-white" download>Download resume</a></button>
             {% else %}
-                <p>No attached resume</p>
+                <button type="submit" class="btn btn-success bg-gradient"><a style="text-decoration:none" href="{% url 'edit_candidate' candidate.id %}" class="text-white">Upload resume</a></button>
             {% endif %}
         </div>
 
