@@ -61,9 +61,13 @@ def edit_candidate(request, pk):
         form = AddCandidateForm(request.POST, request.FILES, instance=candidate)
 
         if form.is_valid():
-            
-            if 'remove_image' in request.POST:
+            # let users remove their current image or resume 
+            if 'image-clear' in request.POST:
                 candidate.image.delete(save=False)
+                candidate.image = None
+            
+            if 'resume-clear' in request.POST:
+                candidate.resume.delete(save=False)
                 candidate.image = None
         
             candidate.last_modified_by = request.user

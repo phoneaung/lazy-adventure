@@ -43,6 +43,8 @@
             <div class="col-auto">
                 <label for="id_image">Current image:</label>
                 <a href="{{ candidate.image.url }}">{{ candidate.image.url }}</a>
+                <input type="checkbox" name="image-clear" id="image-clear_id">
+                <label for="image-clear_id">Clear</label>
                 <input type="file" class="form-control" name="image" accept="image/*" id="id_image">
             </div>
         </div>
@@ -51,7 +53,8 @@
             <div class="col-auto">
                 <label for="id_resume">Update Resume:</label>
                 <a href="{{ candidate.resume }}">{{ candidate.resume }}</a>
-                <input type="checkbox" value="remove_image">Clear
+                <input type="checkbox" name="resume-clear" id="resume-clear_id">
+                <label for="resume-clear_id">Clear</label>
                 <input type="file" class="form-control" name="resume" id="id_resume">
             </div>
         </div>
