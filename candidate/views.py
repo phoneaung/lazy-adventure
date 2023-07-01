@@ -82,6 +82,7 @@ def edit_candidate(request, pk):
             messages.success(request, 'The changes were saved!')
             return redirect('candidates_list')
     else:
+        
         form = AddCandidateForm(instance=candidate)
 
     return render(request, 'candidate/edit_candidate.html', {
