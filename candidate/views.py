@@ -65,16 +65,22 @@ def edit_candidate(request, pk):
             if 'image-clear' in request.POST:
                 candidate.image.delete(save=False)
                 candidate.image = None
+
+            # if the image is empty, assign the default image
+            instance = form.save(commit=False)
+            if not instance.image:
+                instance.image = 'default_image.jpg'
+            instance.save()
             
             if 'resume-clear' in request.POST:
                 candidate.resume.delete(save=False)
-                candidate.image = None
+                candidate.resume = None
         
             candidate.last_modified_by = request.user
             form.save()
 
             messages.success(request, 'The changes were saved!')
-            return redirect('candidate_list')
+            return redirect('candidates_list')
     else:
         form = AddCandidateForm(instance=candidate)
 
