@@ -39,13 +39,14 @@ def add_candidate(request):
         if form.is_valid():
             candidate = form.save(commit=False)
             candidate.created_by = request.user
+            candidate.last_modified_by = request.user
             candidate.save()
 
             messages.success(request, "Candidate has successfully created!")
 
             return redirect('/dashboard/')
-
-    form = AddCandidateForm()
+    else:
+        form = AddCandidateForm()
 
     return render(request, 'candidate/add_candidate.html', {
         'form': form
@@ -89,5 +90,3 @@ def edit_candidate(request, pk):
         'form': form,
         'candidate': candidate,
     })
-
-# delete candidate

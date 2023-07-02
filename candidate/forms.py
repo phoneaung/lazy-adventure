@@ -11,4 +11,5 @@ class AddCandidateForm(forms.ModelForm):
         widgets = {
             'image': forms.ClearableFileInput(attrs={'multiple': False}),
             'resume': forms.ClearableFileInput(attrs={'multiple': False}),
+            'status': forms.Select(attrs={'class': 'form-control'}), 
         }
