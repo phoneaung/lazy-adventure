@@ -11,7 +11,7 @@
     <div class="row mx-3">
         <div class="d-grid my-3 gap-2 d-md-flex">
             <button class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'edit_candidate' candidate.id %}">Edit</a></button>
-            <button class="btn btn-danger bg-gradient"><a class="nav-link text-white" href=#>Delete</a></button>
+            <button class="btn btn-danger bg-gradient"><a class="nav-link text-white" href="{% url 'delete_candidate' candidate.id %}">Delete</a></button>
         </div>
     </div>
     
