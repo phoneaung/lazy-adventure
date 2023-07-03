@@ -27,19 +27,6 @@
 
         <div class="row g-3 my-1 align-items-center justify-content-center">
             <div class="col-auto">
-                <label for="id_status">Status:</label>
-                <select name="status" class="form-control dropdown" id="id_status">
-                    <option value="new">New</option>
-                    <option value="contacted">Contacted</option>
-                    <option value="interviewed">Interviewed</option>
-                    <option value="hired">Hired</option>
-                    <option value="rejected">Rejected</option>
-            </select>
-            </div>
-        </div>
-
-        <div class="row g-3 my-1 align-items-center justify-content-center">
-            <div class="col-auto">
                 <label for="id_email">Email:</label>
                 <input type="email" class="form-control" name="email" maxlength="254" required id="id_email">
             </div>
@@ -48,7 +35,20 @@
         <div class="row g-3 my-1 align-items-center justify-content-center">
             <div class="col-auto">
                 <label for="id_phone">Phone:</label>
-                <input type="tel" class="form-control" name="phone" required id="id_phone">
+                <input type="tel" pattern="(\+\d{10}|\+\d{12})" class="form-control" name="phone" required id="id_phone"><small>Format: +959123456789</small>
+            </div>
+        </div>
+
+        <div class="row g-3 my-1 align-items-center justify-content-center">
+            <div class="col-auto">
+                <label for="id_status">Status:</label>
+                <select name="status" class="form-control form-select" id="id_status">
+                    <option value="new">New</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="interviewed">Interviewed</option>
+                    <option value="hired">Hired</option>
+                    <option value="rejected">Rejected</option>
+            </select>
             </div>
         </div>
 
