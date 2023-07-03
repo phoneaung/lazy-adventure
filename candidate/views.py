@@ -99,4 +99,4 @@ def delete_candidate(request, pk):
     candidate.delete()
 
     messages.success(request, 'The candidate has been deleted!')
-    return redirect('candidate_list')
+    return redirect('candidates_list')
