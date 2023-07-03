@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Candidate
+from .models import Candidate, Comment
 
 class AddCandidateForm(forms.ModelForm):
     class Meta:
@@ -13,3 +13,8 @@ class AddCandidateForm(forms.ModelForm):
             'resume': forms.ClearableFileInput(attrs={'multiple': False}),
             'status': forms.Select(attrs={'class': 'form-control'}), 
         }
+
+class AddCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('comment', )

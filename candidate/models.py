@@ -31,3 +31,13 @@ class Candidate(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    candidate = models.ForeignKey(Candidate, related_name='comments', blank=True, null=True, on_delete=models.CASCADE)
+    members = models.ForeignKey(User, related_name='comments', blank=True, null=True, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.members} commented on {self.candidate}'
