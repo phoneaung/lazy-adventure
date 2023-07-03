@@ -90,3 +90,13 @@ def edit_candidate(request, pk):
         'form': form,
         'candidate': candidate,
     })
+
+
+# delete candidate
+@login_required
+def delete_candidate(request, pk):
+    candidate = get_object_or_404(Candidate, pk)
+    candidate.delete()
+
+    messages.success(request, 'The candidate has been deleted!')
+    return redirect('candidate_list')
