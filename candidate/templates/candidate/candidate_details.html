@@ -14,7 +14,6 @@
             <button class="btn btn-danger bg-gradient"><a class="nav-link text-white" href="{% url 'delete_candidate' candidate.id %}">Delete</a></button>
         </div>
     </div>
-    
 
     <div class="row mx-3">
         <div class="card mx-3 my-3" style="width: 300px;">
@@ -48,6 +47,20 @@
             {% else %}
                 <button type="submit" class="btn btn-success bg-gradient"><a style="text-decoration:none" href="{% url 'edit_candidate' candidate.id %}" class="text-white">Upload resume</a></button>
             {% endif %}
+        </div>
+
+        <!-- Comment Section -->
+        <div class="col-md-6">
+            <div class="card mx-3 my-3">
+                <div class="card-body">
+                    <h5 class="card-title">Comments</h5>
+                    <form method="post" action="{% url 'comment_candidate' candidate.id %}">
+                        {% csrf_token %}
+                        <input class="my-3 form-control" type="text" name="comment">
+                        <button class="btn btn-success bg-gradient"><a class="nav-link text-white">Comment</a></button>
+                    </form>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
-from .models import Candidate
-from .forms import AddCandidateForm
+from .models import Candidate, Comment
+from .forms import AddCandidateForm, AddCommentForm
 
 # show all candidates and let users search candidates
 @login_required
@@ -100,3 +100,26 @@ def delete_candidate(request, pk):
 
     messages.success(request, 'The candidate has been deleted!')
     return redirect('candidates_list')
+
+
+# add comments
+@login_required
+def comment(request, pk):
+    candidate = get_object_or_404(Candidate, pk=pk)
+
+    if request.method == 'POST':
+        form = AddCommentForm(request.POST)
+
+        if form.is_valid():
+            comment = form.cleaned_data['comment']
+            comment = Comment.objects.create(candidate=candidate, members=request.user, comment=comment)
+            comment.save()
+
+            messages.success(request, 'You have added a comment!')
+
+        return redirect('candidate_details', pk=pk)
+    
+    else:
+        form = AddCommentForm()
+
+    return redirect('candidate_details', pk=pk)
