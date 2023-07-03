@@ -15,32 +15,34 @@
         </div>
     </div>
 
-    <div class="row mx-3">
+    <div class="col-md-9 mx-3">
         <div class="card mx-3 my-3" style="width: 300px;">
             <img src="{{ candidate.image.url }}" class="card-img-top" alt="{{ candidate.name }}">
         </div>
 
-        <h1>{{ candidate.name }}</h1>
+        <div class="mx-3 my-3">
+            <h1>{{ candidate.name }}</h1>
 
-        {% if candidate.description %}
-            <p>Description: {{ candidate.description }}</p>
-        {% endif %}
+            {% if candidate.description %}
+                <p>Description: {{ candidate.description }}</p>
+            {% endif %}
 
-        <p>Status: {{ candidate.get_status_display }}</p>
+            <p>Status: {{ candidate.get_status_display }}</p>
 
-        <p>Email: {{ candidate.email }}</p>
-        
-        <p>Phone: {{ candidate.phone }}</p>
+            <p>Email: {{ candidate.email }}</p>
+            
+            <p>Phone: {{ candidate.phone }}</p>
 
-        <p>Created by: {{ candidate.created_by }}</p>
+            <p>Created by: {{ candidate.created_by }}</p>
 
-        <p>Last modified by: {{ candidate.last_modified_by }}</p>
+            <p>Last modified by: {{ candidate.last_modified_by }}</p>
 
-        <p>Created on: {{ candidate.created_at|date:"d-M-Y, H:i" }}</p>
+            <p>Created on: {{ candidate.created_at|date:"d-M-Y, H:i" }}</p>
 
-        <p>Last modified: {{ candidate.modified_at|date:"d-M-Y, H:i" }}</p>
+            <p>Last modified: {{ candidate.modified_at|date:"d-M-Y, H:i" }}</p>
+        </div>
 
-        <div class="d-grid my-3 gap-2 d-md-flex">
+        <div class="d-grid mx-3 my-3 gap-2 d-md-flex">
             <button type="submit" class="btn btn-success bg-gradient"><a class="nav-link text-white" href="{% url 'candidates_list' %}">Back</a></button>
             {% if candidate.resume %}
                 <button type="submit" class="btn btn-success bg-gradient"><a style="text-decoration:none" href="{{ candidate.resume.url }}" class="text-white" download>Download resume</a></button>
