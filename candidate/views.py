@@ -24,9 +24,11 @@ def candidates_list(request):
 @login_required
 def candidate_details(request, pk):
     candidate = get_object_or_404(Candidate, is_active=True, pk=pk)
+    comments = Comment.objects.filter(candidate=candidate)
 
     return render(request, 'candidate/candidate_details.html', {
-        'candidate': candidate
+        'candidate': candidate,
+        'comments': comments,
     })
 
 
