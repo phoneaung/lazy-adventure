@@ -8,6 +8,31 @@
 
 {% block content %}
 
-    <h1>Dashboard</h1>
+    <p class="px-2 py-2">logged in as: {{ request.user.username }}</p>
+    
+    <h1>Candidates</h1>
+    <div class="list-group">
+
+        {% if candidates %}
+
+            {% for candidate in candidates %}
+
+            <a style="text-decoration:none" href="{% url 'candidate_details' candidate.id %}" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Name: {{ candidate.name }}</h5>
+                    <small>{{ candidate.modified_at }}</small>
+                </div>
+                <p class="mb-1">Created by: {{ candidate.created_by }} </p>
+                <small>Status: {{ candidate.status }}</small>
+            </a>
+
+            {% endfor %}
+
+            {% else %}
+
+            <p>There are no candidates in the database. Try add <a href="{% url 'add_candidate' %}">here</a></p>
+
+        {% endif %}
+    </div>
 
 {% endblock %}
