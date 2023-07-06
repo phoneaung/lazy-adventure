@@ -71,8 +71,9 @@
         </div>
 
         <div class="col-auto">
+            <h4>Comments by recruiters</h4>
             {% for comment in comments %}
-                <ul class="list-group">
+                <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <strong>{{ comment.members }}</strong>: {{ comment.comment }}
                         <p>{{ comment.created_at|date:"d-M-Y, H:i" }}</p>
