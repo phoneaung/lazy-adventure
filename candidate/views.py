@@ -83,7 +83,7 @@ def edit_candidate(request, pk):
             form.save()
 
             messages.success(request, 'The changes were saved!')
-            return redirect('candidates_list')
+            return redirect('candidate_details', pk=pk)
     else:
         
         form = AddCandidateForm(instance=candidate)
