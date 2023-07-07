@@ -14,7 +14,7 @@ The functions include
 type source env/bin/activate in your terminal to activate your virtual environment
 type pip install django to install the latest version of django framework
 type pip install pillow to be able to handle image files 
-type pip install decouple 
+type pip install decouple to handle django secret key from .env file
 python manage.py runserver to run the app
 
 #### Built with
@@ -24,7 +24,3 @@ python manage.py runserver to run the app
 -HTML
 -CSS
 -Boostrap
-
-Users can add, edit and delete candidates.
-Users can add comment to each candidates.
-Users can search candidates.
