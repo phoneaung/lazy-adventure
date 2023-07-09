@@ -14,7 +14,7 @@ A recruitment management system is web-based application developed using Python,
 - Download Resume: Users can download the resumes attached to candidates' profiles for offline viewing and evaluation.
 
 #### Getting started
-- Clone the repository: git clone <repository-url>
+- Clone the repository: git clone <https://github.com/phoneaung/rms>
 - Navigate to the project directory: cd recruitment-management-system
 - Create a virtual environment: python -m venv venv
 - Activate the virtual environment:
